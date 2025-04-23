@@ -23,6 +23,7 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: 80px; /* Added to account for fixed header */
         }
 
         /* Hide scrollbar but keep functionality */
@@ -42,6 +43,18 @@
         header {
             padding: 20px 0;
             border-bottom: 1px solid #27272a;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            z-index: 1000;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        header.hide {
+            transform: translateY(-100%);
         }
 
         nav {
@@ -609,6 +622,120 @@
             opacity: 1;
             pointer-events: all;
         }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background-color: black;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid #27272a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        .modal-body h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #27272a;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .github-link:hover {
+            background-color: #3f3f46;
+        }
+
+        .github-link svg {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #27272a;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #3f3f46;
+        }
+
+        .download-btn svg {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -773,7 +900,7 @@
                     <div class="project-content">
                         <h3 class="project-title">LLM from Scratch</h3>
                         <p class="project-desc">Designed and built a large language model from the ground up, implementing advanced NLP techniques and neural architectures.</p>
-                        <a href="#" class="project-link">
+                        <a href="#" class="project-link" data-modal="llm-modal">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -786,7 +913,7 @@
                     <div class="project-content">
                         <h3 class="project-title">SPA HTML Local File Explorer</h3>
                         <p class="project-desc">Created a single-page application that allows users to browse and manage local files directly in the browser.</p>
-                        <a href="#" class="project-link">
+                        <a href="#" class="project-link" data-modal="file-explorer-modal">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -799,7 +926,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Manual Local Music Player</h3>
                         <p class="project-desc">Developed a lightweight music player application that runs locally and provides a customizable listening experience.</p>
-                        <a href="#" class="project-link">
+                        <a href="#" class="project-link" data-modal="music-player-modal">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -812,7 +939,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Company Websites</h3>
                         <p class="project-desc">Designed and developed responsive, modern websites for multiple companies, focusing on user experience and brand identity.</p>
-                        <a href="#" class="project-link">
+                        <a href="#" class="project-link" data-modal="websites-modal">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -825,7 +952,7 @@
                     <div class="project-content">
                         <h3 class="project-title">The Three Orbits</h3>
                         <p class="project-desc">Authored a book exploring the intersection of technology, physics, and philosophy, examining how these disciplines shape our understanding of the world.</p>
-                        <a href="#" class="project-link">
+                        <a href="#" class="project-link" data-modal="book-modal">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
@@ -915,6 +1042,145 @@
         </div>
     </footer>
 
+    <!-- Project Modals -->
+    <!-- LLM Modal -->
+    <div class="modal" id="llm-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">LLM from Scratch</h2>
+                <button class="modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a href="https://github.com/WoahOmar066/LLM" class="github-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View on GitHub
+                </a>
+<h3>Project Overview</h3> <p>The Custom GPT Implementation is a lightweight, from-scratch transformer model built with PyTorch and Hugging Face, providing a full training pipeline and interactive chat interface for flexible text generation without relying on high-level APIs.</p> <h3>Key Features</h3> <p><strong>From-Scratch Transformer Decoder:</strong> Implements custom PositionalEncoding, MultiHeadSelfAttention, and FeedForward modules to form a GPT-style decoder stack.</p> <p><strong>Hardware Optimization:</strong> Supports CUDA acceleration, automatic mixed precision (AMP), and PyTorch compilation for efficient GPU training and inference.</p> <p><strong>Advanced Training Pipeline:</strong> Includes cyclical learning rate scheduling (CyclicLR), gradient clipping, interrupt-safe checkpointing, and adaptive learning rate adjustment.</p> <p><strong>Versatile Text Generation:</strong> Offers both standard and streaming token-by-token output modes plus an interactive chat interface with context management.</p> <p><strong>Checkpoint & Logging:</strong> Automated checkpoint saving, resumption, and detailed training logs for robust experiment tracking.</p> <h3>Technical Implementation</h3> <p>Engineered in Python using PyTorch and Hugging Face tokenizers, the model centers on an <code>nn.TransformerDecoder</code> built from custom layers. The training loop leverages <code>torch.cuda.amp</code> for mixed precision, the AdamW optimizer with a CyclicLR scheduler, and <code>tqdm</code> for progress bars. Checkpoint management ensures safe resumption and logging captures loss, LR, and performance metrics.</p> <h3>Unique Approach</h3> <p>Rather than using off-the-shelf transformer wrappers, every component—from embedding and positional encodings to causal masks and token sampling—was implemented manually. Streaming generation and interactive chat are handled at the token level to demonstrate full control over the model’s behavior and output flow.</p> <h3>Learning Outcomes</h3> <p>Gained deep insights into transformer internals, self-attention mechanics, and efficient GPU training techniques. Developed expertise in mixed precision, dynamic learning rates, checkpointing strategies, and building interactive machine learning applications end-to-end.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Explorer Modal -->
+    <div class="modal" id="file-explorer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">SPA HTML Local File Explorer</h2>
+                <button class="modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a href="https://github.com/WoahOmar066/SPA-File-Explorer" class="github-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View on GitHub
+                </a>
+                <h3>Project Overview</h3>
+                <p>The SPA HTML Local File Explorer is a browser-based application that allows users to browse, manage, and interact with files stored on their local device without requiring server-side processing.</p>
+                
+                <h3>Key Features</h3>
+                <p><strong>Single-Page Architecture:</strong> The entire application runs in a single HTML file, using modern JavaScript to handle all functionality without page refreshes.</p>
+                <p><strong>File System API Integration:</strong> Leverages the browser's File System Access API to securely access the user's local files with permission.</p>
+                <p><strong>Intuitive Interface:</strong> Features a familiar file explorer layout with navigation breadcrumbs, icon/list views, and sortable columns.</p>
+                <p><strong>File Operations:</strong> Supports basic operations like copy, move, rename, delete, and create new folders or files.</p>
+                <p><strong>Preview Capabilities:</strong> Built-in viewers for common file types including text, images, audio, and video.</p>
+                
+                <h3>Technical Implementation</h3>
+                <p>This project was particularly challenging as it required working within browser security constraints while still providing a seamless user experience. I implemented the application using vanilla JavaScript without any frameworks to ensure maximum efficiency and compatibility.</p>
+                
+                <h3>Security Considerations</h3>
+                <p>Security was a primary concern throughout development. The application requests explicit permission from users before accessing any files, never transmits file data over the network, and runs entirely client-side to maintain data privacy.</p>
+                
+                <h3>Learning Outcomes</h3>
+                <p>Building this application deepened my understanding of modern web APIs, browser security models, and efficient client-side application architecture. I learned to create complex functionality that traditionally required desktop applications, all within the browser environment.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player Modal -->
+    <div class="modal" id="music-player-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Manual Local Music Player</h2>
+                <button class="modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a href="https://github.com/WoahOmar066/Manual_Music_Player" class="github-link" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View on GitHub
+                </a>
+                <h3>Project Overview</h3>
+                <p>The Manual Local Music Player is a lightweight desktop application designed to provide users with a simple, customizable way to enjoy their music library without relying on streaming services or internet connectivity.</p>
+                
+                <h3>Key Features</h3>
+                <p><strong>Minimalist Design:</strong> Clean, intuitive interface focused on music playback rather than unnecessary features.</p>
+                <p><strong>Manual Organization:</strong> Gives users complete control over how their music is organized, allowing custom playlists, tags, and folder structures.</p>
+                <p><strong>Audio Customization:</strong> Includes equalizer settings, playback speed controls, and volume normalization.</p>
+                <p><strong>Metadata Editor:</strong> Built-in tool for viewing and editing music metadata (artist, album, genre, etc.).</p>
+                <p><strong>Lightweight Performance:</strong> Optimized to use minimal system resources while maintaining high-quality audio playback.</p>
+                
+                <h3>Technical Implementation</h3>
+                <p>This application was built using Electron.js for cross-platform compatibility, with a focus on native file system access for optimal performance. I implemented custom audio processing algorithms to handle various file formats and quality settings.</p>
+                
+                <h3>Unique Approach</h3>
+                <p>Unlike most modern music players that focus on recommendation algorithms and online features, this player intentionally returns to basics, giving users complete control over their listening experience without algorithmic interference.</p>
+                
+                <h3>Learning Outcomes</h3>
+                <p>This project deepened my understanding of audio processing, file system operations, and desktop application development. I gained valuable experience in creating an application that respects user privacy while delivering a focused, high-quality experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Websites Modal -->
+    <div class="modal" id="websites-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Company Websites</h2>
+                <button class="modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                Made many websites for companies. 
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Modal -->
+    <div class="modal" id="book-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">The Three Orbits</h2>
+                <button class="modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a href="book.pdf" class="download-btn" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Book PDF
+                </a>
+                
+                <h3>About "The Three Orbits"</h3>
+                <p>"The Three Orbits" is my philosophical exploration of the systems that shape our world and our minds. At just thirteen years old, I've endeavored to create a comprehensive framework for understanding the interconnected nature of education, technology, governance, and human experience.</p>
+                
+                <h3>Key Themes</h3>
+                <p><strong>Educational Reform:</strong> The book critically examines modern education systems that prioritize memorization over understanding and compliance over creativity.</p>
+                <p><strong>Technological Ethics:</strong> I explore artificial intelligence and its impact on society, sharing my personal experience building an LLM and reflecting on the broader implications of technological advancement.</p>
+                <p><strong>Economic Systems:</strong> The text challenges conventional economic structures and proposes alternative models based on value circulation rather than extraction.</p>
+                <p><strong>Governance:</strong> I question the effectiveness of traditional political systems and consider how they might be redesigned to better serve human flourishing.</p>
+                <p><strong>Personal Journey:</strong> Throughout the book, I weave in personal reflections about my relationship with my father, my ambitions, and the limitations I face as a young thinker with boundless aspirations.</p>
+                
+                <h3>Purpose</h3>
+                <p>"The Three Orbits" represents both my analysis of world systems and my personal manifesto. It challenges readers to question established structures and consider alternative possibilities based on principles of justice and human dignity.</p>
+                
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -922,6 +1188,7 @@
         const mobileMenu = document.querySelector('.mobile-menu');
         const overlay = document.querySelector('.overlay');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const header = document.querySelector('header');
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.add('active');
@@ -947,6 +1214,23 @@
                 overlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
+        });
+
+        // Header hide/show on scroll
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                header.classList.add('hide');
+            } else {
+                // Scrolling up
+                header.classList.remove('hide');
+            }
+            
+            lastScrollY = currentScrollY;
         });
 
         // Smooth scrolling for anchor links
@@ -987,7 +1271,53 @@
             });
         });
 
-        // Form submission handling (just for demonstration)
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Add click events to project links
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalId = this.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
+
+        // Close modals when clicking on the close button or outside the modal
+        document.querySelectorAll('.modal-close').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Prevent modal content click from closing the modal
+        document.querySelectorAll('.modal-content').forEach(content => {
+            content.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
         // Contact section links hover effect
         const contactLinks = document.querySelectorAll('.contact-link');
         
