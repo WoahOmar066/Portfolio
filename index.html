@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M. Omar - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -293,8 +293,47 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+        
+        /* Other Projects Toggle styling */
+        .other-projects-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: black;
+            border: 1px solid #27272a;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .other-projects-toggle:hover {
+            background-color: #1a1a1a;
+        }
+        
+        .other-projects-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .toggle-icon {
+            transition: 0.3s ease;
+        }
+        
+        .toggle-icon.rotate .caret-icon {
+            transform: rotate(180deg);
+        }
+        
+        .other-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
         }
 
         .project-card {
@@ -306,7 +345,7 @@
 
         .project-img {
             width: 100%;
-            height: 200px;
+            height: 100px;
             background-color: #27272a;
             display: flex;
             align-items: center;
@@ -736,6 +775,12 @@
             width: 20px;
             height: 20px;
         }
+        .project-icon svg{stroke:currentColor;width:28px;height:28px; margin-bottom: 15px; margin-left: -3.4px;}
+        .cover{position:fixed;top:0;left:0;width:100%;height:100%;background:black;z-index:1060;opacity:0;pointer-events:none;transition:.3s ease;}
+        .cover.active{opacity:1;pointer-events:all;}
+        .cover-content{max-width:900px;margin:80px auto;padding:25px;}
+        .project-link:hover{color:#ffffff93;}
+        .cover-close{position:fixed;top:40px;left:60px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;}
     </style>
 </head>
 <body>
@@ -743,7 +788,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo"><img src="favicon.png" alt="M. Omar"></div>
+                <div class="logo"><img src="logo.png" alt="M. Omar"></div>
                 <div class="nav-links">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#about" class="nav-link">About</a>
@@ -778,8 +823,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero-img">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <div class="hero-img" style="border-left: 3px solid #3b3b3b; height: 300px; width: 300px; border-bottom-left-radius: 0; border-top-left-radius: 0;">
+                <img src="pfp.png" alt="">
             </div>
             <h1>Mohammad Omar Siddiqui</h1>
             <h2>Web Developer, NLP and AI Expert, Photographer, Physicist and Calculus Expert, Author, Entrepreneur, Photoshop and AutoCAD expert.</h2>
@@ -888,81 +933,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"></path><path d="M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"></path><path d="M12 6v7"></path></svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">LLM from Scratch</h3>
-                        <p class="project-desc">Designed and built a large language model from the ground up, implementing advanced NLP techniques and neural architectures.</p>
-                        <a href="#" class="project-link" data-modal="llm-modal">
-                            View Project 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">SPA HTML Local File Explorer</h3>
-                        <p class="project-desc">Created a single-page application that allows users to browse and manage local files directly in the browser.</p>
-                        <a href="#" class="project-link" data-modal="file-explorer-modal">
-                            View Project 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Manual Local Music Player</h3>
-                        <p class="project-desc">Developed a lightweight music player application that runs locally and provides a customizable listening experience.</p>
-                        <a href="#" class="project-link" data-modal="music-player-modal">
-                            View Project 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Company Websites</h3>
-                        <p class="project-desc">Designed and developed responsive, modern websites for multiple companies, focusing on user experience and brand identity.</p>
-                        <a href="#" class="project-link" data-modal="websites-modal">
-                            View Project 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">The Three Orbits</h3>
-                        <p class="project-desc">Authored a book exploring the intersection of technology, physics, and philosophy, examining how these disciplines shape our understanding of the world.</p>
-                        <a href="#" class="project-link" data-modal="book-modal">
-                            View Project 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
+        <!-- Experience Section -->
     <section class="experience" id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
@@ -989,14 +960,288 @@
                 </div>
             </div>
         </div>
+    </section>    
+
+    <section class="projects" id="projects">
+    <div class="container">
+        <h2 class="section-title">Key Projects</h2>
+
+        <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-content">
+            <div class="project-icon">
+                <!-- Entrepreneurship icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" style="color: #ffff53" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3 class="project-title">NeuroNode</h3>
+            <p class="project-desc">Boot-strapped Cloud and AI startup delivering on-device inference & training after cloud costs hit the ceiling. Offering Virtual Processing as a Tool (VPaaT) through NeuroNode Process.</p>
+            <a href="#" class="project-link" data-cover="cover-neuronode">Explore</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-content">
+            <div class="project-icon">
+                <!-- Writing Manuscripts icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" style="color: #93ff53" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <h3 class="project-title">The Three Orbits</h3>
+            <p class="project-desc">A bold 500-page manuscript dissecting education, economics, governance & power structures—written to spark deep reflection.</p>
+            <a href="#" class="project-link" data-cover="cover-tto">Explore</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-content">
+            <div class="project-icon">
+                <!-- NLP icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" style="color: #5393ff;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 18h.01"/><path d="M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/><path d="M12 6v7"/></svg>
+            </div>
+            <h3 class="project-title">Large Language Model From Scratch</h3>
+            <p class="project-desc">Device-agnostic language model engineered from zero, exposing the nuts & bolts of NLP while training on everyday hardware.</p>
+            <a href="#" class="project-link" data-cover="cover-llm">Explore</a>
+            </div>
+        </div>
+
+        <!-- Regular – Photography Views -->
+        <div class="project-card">
+            <div class="project-content">
+                <div class="project-icon">
+                <!-- Photography icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" style="color: #ff9953" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <h3 class="project-title">170k Views on Photography</h3>
+                <p class="project-desc">Street & wildlife gallery: 130k views on Pexels, 40k on Unsplash—capturing life in motion.</p>
+                <a href="#" class="project-link" data-cover="cover-photography">Explore</a>
+            </div>
+        </div>
+        </div>
+        
+        <!-- Other Projects Toggle Bar -->
+        <div class="other-projects-toggle" style="height: 50px;">
+            <div class="other-projects-title">Other Projects</div>
+            <div class="toggle-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 9px; margin-right: -7.5px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="caret-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+        </div>
+        
+        <!-- Other Projects Grid (Hidden by Default) -->
+        <div class="other-projects-grid" style="display: none;">
+            <div class="project-card">
+                <div class="project-content">
+                <div class="project-icon">
+                    <!-- Full-Stack icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #53ff93" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <h3 class="project-title">SPA HTML Local File Explorer</h3>
+                <p class="project-desc">Pure-HTML single-page explorer for local directories—drag, drop & browse without a server.</p>
+                </div>
+            </div>
+
+            <!-- Regular – ML Differential Solver -->
+            <div class="project-card">
+                <div class="project-content">
+                <div class="project-icon" style="display:flex;gap:8px;">
+                    <!-- NLP icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #5393ff" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 18h.01"/><path d="M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/><path d="M12 6v7"/></svg>
+                    <!-- Calculus & Physics icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color:#ff5393; margin-left: 8px;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="3" x2="6" y2="21"/><path d="M9 3l1 0"/><path d="M9 9l-5 0"/><path d="M9 15l-5 0"/><path d="M9 21l-5 0"/><path d="M21 13l-11 0"/></svg>
+                </div>
+                <h3 class="project-title">ML-Aided Differential Equation Solver</h3>
+                <p class="project-desc">Hybrid physics engine that parses LaTeX PDEs & recommends numeric solutions with an NLP assist.</p>
+                </div>
+            </div>
+
+            <!-- Regular – Local Music Player -->
+            <div class="project-card">
+                <div class="project-content">
+                <div class="project-icon">
+                    <!-- Full-Stack icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #53ff93" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <h3 class="project-title">Manual Local Music Player</h3>
+                <p class="project-desc">Vanilla-JS audio player that loads & plays local tracks with a neat waveform UI.</p>
+                </div>
+            </div>
+
+            <!-- Regular – Photoshop & AutoCAD Homes -->
+            <div class="project-card">
+                <div class="project-content">
+                <div class="project-icon" style="display:flex;gap:8px;">
+                    <!-- AutoCAD -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #9353ff" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+                    <!-- Photoshop -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #53ffff; margin-left: 8px;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <h3 class="project-title">Homes - Photoshop & AutoCAD</h3>
+                <p class="project-desc">Residential blueprints in AutoCAD brought to life with Photoshop concept renders.</p>
+                </div>
+            </div>
+
+            <!-- Regular – Company Websites -->
+            <div class="project-card">
+                <div class="project-content">
+                <div class="project-icon">
+                    <!-- Full-Stack icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="color: #53ff93" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <h3 class="project-title">Company Websites</h3>
+                <p class="project-desc">Suite of production full-stack sites—marketing, e-commerce & dashboards for SMEs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
+
+    <!-- ====== Star Covers – full-screen ====== -->
+    <div class="cover" id="cover-llm">
+    <button class="cover-close" onclick="closeCover('cover-llm')">✕</button>
+    <div class="cover-content">
+        <h2 style="font-size: 30px;">Large Language Model — From Scratch</h2>
+
+        <p>I set out to build my own <strong>LLM</strong> so I could understand every layer between raw text and generated thought. On 1 November 2024 I opened a blank folder, installed PyTorch, and started.</p><br>
+        
+        <p><strong>The Architecture</strong></p>
+        <p>I wrote <em>CustomGPT</em>: 12 decoder layers, 12 heads, 768-dim embeddings, plus a sinusoidal positional encoder. Writing attention, feed-forward, and layer norms from scratch forced me to internalize why each tensor reshape exists—and why half of debugging is catching a silent dimension mismatch.</p><br>
+        
+        <p><strong>The Data & Tokenization</strong></p>
+        <p>I pulled 20 GB of OpenWebText and fed it through the GPT-2 tokenizer. Tokenization felt trivial until a rogue UTF-8 byte crashed the batch loader; lesson learned: preprocessing is as mission-critical as model math.</p><br>
+        
+        <p><strong>The Training Loop</strong></p>
+        <p>Mixed-precision with <em>torch.cuda.amp</em>, cyclical LR, gradient clipping, and on-interrupt checkpoints keep my RTX 3060 alive. A tiny 8-sample mini-batch inches loss downward while a dynamic LR tweak nudges learning rate based on consecutive loss trends.</p><br>
+        
+        <p><strong>Interactive Chat</strong></p>
+        <p>“Converse” mode keeps a rolling 5-turn context, streams tokens live, and logs every dialogue. Watching my own model fumble, recover, then surprise me was the moment theory became reality.</p><br>
+        
+        <p><strong>Lessons Carved in Code</strong></p>
+        <p>• <strong>Tokens</strong> are language atoms—mis-tokenize, poison the reaction.<br>
+        • <strong>Parameters</strong> are memory—each new weight is a decision the model can now make.<br>
+        • <strong>Epochs</strong> are humility—loss curves rarely behave, but they always teach.<br>
+        • <strong>Loss</strong> is honesty—ignore spikes and hallucinations become habits.</p><br>
+        
+        <p><strong>The Aim of this Project</strong></p>
+        <p>When I started this project, it was out of inspiration from DeepSeek. How they totally destroyed the limits on how they trained their model. So my goal was to create an LLM training script which can be used on any device, even a laptop or a PC, and train a Claude or ChatGPT level model, through an entirely new architecture.</p><br>
+
+        <p><strong>The Problem</strong></p>
+        <p>But I was never able to train this model because in the end, to get a machine to write, process, or think, you truly do need significant computational resources. Even if DeepSeek got 6,000,000,000$ down to 6,000,000$—it will take time before another significant advancement is made. Maybe once again from China.</p><br>
+        <a href="https://github.com/WoahOmar066" class="contact-link covk" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            LLM on GitHub
+        </a>
+        </div>
+    </div>
+
+    <div class="cover" id="cover-tto">
+    <button class="cover-close" onclick="closeCover('cover-tto')">✕</button>
+    <div class="cover-content">
+        <h2 style="font-size: 30px;">The Three Orbits</h2>
+        <p><strong>Why I Wrote This Book</strong></p>
+        <p>I am young and impatient. <strong>The Three Orbits</strong> is my response to the systems that shape our world without our consent. By mapping those systems into concentric circles—core principles, structural engines, and what binds it—I invite readers to examine where they stand and how they might redraw the lines.<br></p>
+        <br><p><strong>Education — The Mold</strong></p>
+        <p>Our first orbit challenges the classroom that confuses obedience for learning. Schools reward memorization, smother curiosity, and stretch childhood across fifteen exhausting years. I offer a blueprint for mastery-based, curiosity-driven learning that abolishes rote grades and measures growth by depth of understanding, not hours on a timetable.<br></p>
+        <br><p><strong>Technology — The Chip</strong></p>
+        <p>Automation now targets cognition itself. I examine large language models, AI-powered economies, and the danger of hollowing out entire career pipelines. Technology is neutral; its moral weight depends on whether it amplifies human potential or replaces it. The answer lies in balancing AI assistance with pathways that still grow real expertise.<br></p>
+        <br><p><strong>Economics — The Exchange</strong></p>
+        <p>Scarcity has become a business model. Current markets extract value upstream and drip it downstream. I propose a multi-dimensional value system—circulating mutual benefit, decoupling survival from employment, and recognizing contributions that money overlooks. In short: economies should measure flourishing, not just profit.<br></p>
+        <br><p><strong>Governance — The Shift</strong></p>
+        <p>Power concentrates, then calcifies. From electoral theater to invisible empire, I identify design flaws that let authority serve itself. My fix redistributes decision-making, treats necessities as rights, and drafts a pathway toward border-transcending governance where protection never equals control.<br></p>
+        <br><p><strong>Corruption & Conflict — The Blood</strong></p>
+        <p>When justice falters, systems weaponize fear and nationalism. I dissect how oppression is justified, how enemies are manufactured, and how geopolitical chess turns civilians into pawns. Exposing corruption is the first step; rebuilding trust is the second—and harder—task I set before us.<br></p>
+        <br><p><strong>Humanity — The Speech</strong></p>
+        <p>Beneath every law and ledger beats a human heart. This section shifts from analysis to exhortation: a call for courage, empathy, and relentless truth-telling. Systems are indifferent; people are not. If we reclaim our moral agency, structures must bend or break.<br></p>
+        <br><p><strong>The TTO Framework</strong></p>
+        <p>At the book’s center is the Three-Orbit Framework:</p>
+        <p>• <strong>The Core</strong> — Justice, Freedom, Truth, Knowledge. <br>
+        • <strong>The Structure</strong> — Education, Politics, Technology, Faith. <br>
+        • <strong>The Outer Circle</strong> — The force that binds principles to practice.</p>
+        <p>Remove any element and the system collapses; honor all three layers and society approaches genuine flourishing. And if an element is removed, the system will surely thrive—but the people will suffer.</p>
+        <br><p><strong>Looking Forward</strong></p>
+        <p>These pages are not an endpoint but an invitation. Test the framework, challenge it, refine it—and above all, refuse to accept "How it is." If even one reader closes this book ready to rebuild a broken orbit, its mission is already underway.<br></p>
+    </div>
+    </div>
+
+    <div class="cover" id="cover-neuronode">
+    <button class="cover-close" onclick="closeCover('cover-neuronode')">✕</button>
+    <div class="cover-content">
+        <h2 style="font-size: 30px;">NeuroNode</h2>
+        <p>I created a startup, NeuroNode. Removing the heavy lifting between an idea and the compute it needs. Instead of spinning up VMs or containers, developers simply import raw horsepower whenever code demands it. The result is instant, millisecond-billed access to CPUs, GPUs, RAM, and NPUs.</p><br>
+        <p><strong>Where the Concept Began</strong></p>
+        <p>The trigger moment was a two-day slog to containerize a GPU training pipeline. One broken dependency forced me to rebuild an environment from scratch, even though the only thing I truly needed was forty minutes of GPU math. In that frustration I sketched the outline of VPaaT — Virtual Processing as a Service. Instead of renting whole machines, a developer would purchase exactly the compute slices a single function requires, then call them directly in code.</p><br>
+        <p><strong>NeuroNode Process</strong></p>
+        <p>Process is the working embodiment of VPaaT. I import a module called neuronode.vpaat, obtain a resource ID like gpu_xc23, and pass that object a script path. The script runs remotely and streams results back into my local scope. No virtual machine spins up, no container is built, and I never think about operating systems.</p><br>
+        <p><strong>Hestia</strong></p>
+        <p>Compute is only half of modern work; the other half is intelligence. Hestia is my response to that need. It is a tag-based orchestration layer that lets me plug GPT-4, Claude, Gemini, DeepSeek, and future models into one canvas. Every model reply is wrapped in explicit tags such as &lt;chat&gt; or &lt;image&gt;, so I can capture, remix, or pipe those blocks into tooling without guesswork.</p><br>
+        <p><strong>Labs</strong></p>
+        <p>To bring code, compute, and AI under one roof, I built Labs — a cloud IDE where VPaaT resources sit beside a console window and a snippets marketplace. I can open a Fast language project, allocate two cloud GPUs, and delegate refactoring to a Hestia preset, all within a single browser tab.</p><br>
+        <p><strong>Join</strong></p>
+        <p>While remote compute is powerful, many of my experiments still run best on hardware I own: an idle desktop, a studio laptop, or even a phone’s NPU. Join registers those local devices into a shared workspace so their resources become part of a mesh compute pool. Whether I am batch-processing photos or benchmarking an LLM fine-tune, I can pour the workload across every spare CPU and GPU in the room.</p><br>
+        <p><strong>Fast</strong></p>
+        <p>Some tasks demand total control at metal speed, so I wrote Fast — a compressed systems language where print(&quot;hello&quot;) shortens to p:hello. It keeps syntax lean, performance high, and drops directly into VPaaT objects when every microsecond counts.</p><br>
+        <p><strong>Real-World Friction Removed</strong></p>
+        <p>Since shifting my own workloads to NeuroNode I have watched environment setup times fall from tens of minutes to under two, and GPU utilization climb because nothing sits idle waiting for a container heartbeat. More important, I now explore prototypes the moment curiosity strikes: an architecture daylight simulation at breakfast, a physics solver after lunch, or a photographic style-transfer batch in the evening.</p><br>
+        <p><strong>Looking Forward</strong></p>
+        <p>I have submitted NeuroNode to the Y Combinator S25 batch and, as of this writing, I am still waiting for a response. While that decision brews, I am refining three priorities: spot-market awareness so VPaaT resources automatically migrate to cheaper data-center inventory; a stricter tag grammar for Hestia so AI blocks feed cleanly into CI/CD pipelines; and a public preview of Join for creative teams that want cluster power without a data-center budget.</p><br>
+        <p><strong>Lessons Carved in Code</strong></p>
+        <p>If architecture taught me to design space for people, and physics taught me to respect constraint, NeuroNode has taught me to treat infrastructure like clay. Compute should bend to creative flow, not the other way around. By borrowing power instead of renting machines, I reclaim the mental bandwidth that fuels discovery — and that, above all else, is the change I hope every future user feels the first time they write import neuronode.vpaat.</p><br>
+    </div>
+    </div>
+    
+    <style>
+        #cover-neuronode .cover-content p {
+            font-size: 18px;
+        }
+        .cover { overflow-y: auto; }
+        .covk {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="cover" id="cover-photography">
+    <button class="cover-close" onclick="closeCover('cover-photography')">✕</button>
+    <div class="cover-content">
+        <h2 style="font-size: 30px;">170k Views on My Photography</h2>
+
+        <p>I share my lens with the world on two free-stock platforms—Unsplash and Pexels—and together they’ve welcomed more than 170 000 views of my cityscapes, skylines, and street shots.</p><br>
+        
+        <p><strong>Unsplash Highlights</strong></p>
+        <p>On Unsplash I’ve published 129 photos that range from twilight skyscraper silhouettes to aerial perspectives of Dubai’s highways, earning a steady stream of downloads and appreciations.<br>
+        Top-tagged themes include <em>animal</em>, <em>city</em>, <em>outdoor</em>, <em>sky</em>, and <em>urban</em>, reflecting my habit of wandering the city at dawn and dusk for dramatic lighting.</p><br>
+        
+        <p><strong>Pexels Milestones</strong></p>
+        <p>Pexels users have viewed my gallery more than 129 000 times, placing me in the top 1.8 K creators over the past 30 days and 60 K all-time. The 130 images there capture everything from abstract light trails to birds in silhouette, and together they form a visual diary of growing up in Dubai’s vertical playground.</p><br>
+        
+        <p><strong>My Visual Signature</strong></p>
+        <p>I chase <em>contrast</em>: bright desert skies against glass facades, moonlit clouds framing aircraft wings, and the neon reds of late-night traffic. Every frame is a study in lines and layers, informed by my background in architecture and physics.</p><br>
+        
+        <p><strong>What the Numbers Mean</strong></p>
+        <p>Views and ranks are only signals, but they confirm that open licensing can amplify a young photographer’s reach. Teachers have used my sunsets for slide decks; startups have placed my skylines on landing pages—proof that a 13-year-old’s camera can travel further than any passport stamp.</p><br>
+        
+        <p><strong>Next Lens, Next Story</strong></p>
+        <p>My goal for 2025 is twofold: break the 250-photo mark across both sites and curate a limited-edition print run that pairs each image with a short reflection on light, place, and perspective. Until then, every click of the shutter is another orbit—capturing slices of the same city that teaches me to look up.</p><br>
+        
+        <a href="https://www.pexels.com/@m-omar-872032462/gallery/" class="contact-link covk" target="_blank" style="margin-bottom: 5px;">                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            Pexels</a>
+        <a href="https://unsplash.com/@m_omar_s/" class="contact-link covk" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>Unsplash</a>
+    </div>
+    </div>
+
+<script>
+  // === cover helpers === // swifty
+  function openCover(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden';}
+  function closeCover(id){document.getElementById(id).classList.remove('active');document.body.style.overflow='auto';}
+
+  // wire links
+  document.querySelectorAll('[data-cover]').forEach(a=>{
+    a.addEventListener('click',e=>{e.preventDefault();openCover(a.dataset.cover);});
+  });
+</script>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Me</h2>
             <div class="contact-text">
-                <p>I'm always interested in new opportunities, collaborations, or just connecting with like-minded individuals. Feel free to reach out through any of the following channels:</p>
+                <p>The thing I hate most about the people who can help most, is that they are impossible to reach. If there is anything I can help with, whether it is a question, an assignment, or just a conversation—do not hesitate to contact me.</p>
             </div>
             <div class="contact-links" style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
                 <a href="mailto:m.omar.a.sid@gmail.com" class="contact-link">
@@ -1041,145 +1286,6 @@
             <div class="footer-text">© 2025 M. Omar. All rights reserved.</div>
         </div>
     </footer>
-
-    <!-- Project Modals -->
-    <!-- LLM Modal -->
-    <div class="modal" id="llm-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">LLM from Scratch</h2>
-                <button class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a href="https://github.com/WoahOmar066/LLM" class="github-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    View on GitHub
-                </a>
-<h3>Project Overview</h3> <p>The Custom GPT Implementation is a lightweight, from-scratch transformer model built with PyTorch and Hugging Face, providing a full training pipeline and interactive chat interface for flexible text generation without relying on high-level APIs.</p> <h3>Key Features</h3> <p><strong>From-Scratch Transformer Decoder:</strong> Implements custom PositionalEncoding, MultiHeadSelfAttention, and FeedForward modules to form a GPT-style decoder stack.</p> <p><strong>Hardware Optimization:</strong> Supports CUDA acceleration, automatic mixed precision (AMP), and PyTorch compilation for efficient GPU training and inference.</p> <p><strong>Advanced Training Pipeline:</strong> Includes cyclical learning rate scheduling (CyclicLR), gradient clipping, interrupt-safe checkpointing, and adaptive learning rate adjustment.</p> <p><strong>Versatile Text Generation:</strong> Offers both standard and streaming token-by-token output modes plus an interactive chat interface with context management.</p> <p><strong>Checkpoint & Logging:</strong> Automated checkpoint saving, resumption, and detailed training logs for robust experiment tracking.</p> <h3>Technical Implementation</h3> <p>Engineered in Python using PyTorch and Hugging Face tokenizers, the model centers on an <code>nn.TransformerDecoder</code> built from custom layers. The training loop leverages <code>torch.cuda.amp</code> for mixed precision, the AdamW optimizer with a CyclicLR scheduler, and <code>tqdm</code> for progress bars. Checkpoint management ensures safe resumption and logging captures loss, LR, and performance metrics.</p> <h3>Unique Approach</h3> <p>Rather than using off-the-shelf transformer wrappers, every component—from embedding and positional encodings to causal masks and token sampling—was implemented manually. Streaming generation and interactive chat are handled at the token level to demonstrate full control over the model’s behavior and output flow.</p> <h3>Learning Outcomes</h3> <p>Gained deep insights into transformer internals, self-attention mechanics, and efficient GPU training techniques. Developed expertise in mixed precision, dynamic learning rates, checkpointing strategies, and building interactive machine learning applications end-to-end.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- File Explorer Modal -->
-    <div class="modal" id="file-explorer-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">SPA HTML Local File Explorer</h2>
-                <button class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a href="https://github.com/WoahOmar066/SPA-File-Explorer" class="github-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    View on GitHub
-                </a>
-                <h3>Project Overview</h3>
-                <p>The SPA HTML Local File Explorer is a browser-based application that allows users to browse, manage, and interact with files stored on their local device without requiring server-side processing.</p>
-                
-                <h3>Key Features</h3>
-                <p><strong>Single-Page Architecture:</strong> The entire application runs in a single HTML file, using modern JavaScript to handle all functionality without page refreshes.</p>
-                <p><strong>File System API Integration:</strong> Leverages the browser's File System Access API to securely access the user's local files with permission.</p>
-                <p><strong>Intuitive Interface:</strong> Features a familiar file explorer layout with navigation breadcrumbs, icon/list views, and sortable columns.</p>
-                <p><strong>File Operations:</strong> Supports basic operations like copy, move, rename, delete, and create new folders or files.</p>
-                <p><strong>Preview Capabilities:</strong> Built-in viewers for common file types including text, images, audio, and video.</p>
-                
-                <h3>Technical Implementation</h3>
-                <p>This project was particularly challenging as it required working within browser security constraints while still providing a seamless user experience. I implemented the application using vanilla JavaScript without any frameworks to ensure maximum efficiency and compatibility.</p>
-                
-                <h3>Security Considerations</h3>
-                <p>Security was a primary concern throughout development. The application requests explicit permission from users before accessing any files, never transmits file data over the network, and runs entirely client-side to maintain data privacy.</p>
-                
-                <h3>Learning Outcomes</h3>
-                <p>Building this application deepened my understanding of modern web APIs, browser security models, and efficient client-side application architecture. I learned to create complex functionality that traditionally required desktop applications, all within the browser environment.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Music Player Modal -->
-    <div class="modal" id="music-player-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Manual Local Music Player</h2>
-                <button class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a href="https://github.com/WoahOmar066/Manual_Music_Player" class="github-link" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    View on GitHub
-                </a>
-                <h3>Project Overview</h3>
-                <p>The Manual Local Music Player is a lightweight desktop application designed to provide users with a simple, customizable way to enjoy their music library without relying on streaming services or internet connectivity.</p>
-                
-                <h3>Key Features</h3>
-                <p><strong>Minimalist Design:</strong> Clean, intuitive interface focused on music playback rather than unnecessary features.</p>
-                <p><strong>Manual Organization:</strong> Gives users complete control over how their music is organized, allowing custom playlists, tags, and folder structures.</p>
-                <p><strong>Audio Customization:</strong> Includes equalizer settings, playback speed controls, and volume normalization.</p>
-                <p><strong>Metadata Editor:</strong> Built-in tool for viewing and editing music metadata (artist, album, genre, etc.).</p>
-                <p><strong>Lightweight Performance:</strong> Optimized to use minimal system resources while maintaining high-quality audio playback.</p>
-                
-                <h3>Technical Implementation</h3>
-                <p>This application was built using Electron.js for cross-platform compatibility, with a focus on native file system access for optimal performance. I implemented custom audio processing algorithms to handle various file formats and quality settings.</p>
-                
-                <h3>Unique Approach</h3>
-                <p>Unlike most modern music players that focus on recommendation algorithms and online features, this player intentionally returns to basics, giving users complete control over their listening experience without algorithmic interference.</p>
-                
-                <h3>Learning Outcomes</h3>
-                <p>This project deepened my understanding of audio processing, file system operations, and desktop application development. I gained valuable experience in creating an application that respects user privacy while delivering a focused, high-quality experience.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Company Websites Modal -->
-    <div class="modal" id="websites-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Company Websites</h2>
-                <button class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                Made many websites for companies. 
-            </div>
-        </div>
-    </div>
-
-    <!-- Book Modal -->
-    <div class="modal" id="book-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">The Three Orbits</h2>
-                <button class="modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a href="book.pdf" class="download-btn" download>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download Book PDF
-                </a>
-                
-                <h3>About "The Three Orbits"</h3>
-                <p>"The Three Orbits" is my philosophical exploration of the systems that shape our world and our minds. At just thirteen years old, I've endeavored to create a comprehensive framework for understanding the interconnected nature of education, technology, governance, and human experience.</p>
-                
-                <h3>Key Themes</h3>
-                <p><strong>Educational Reform:</strong> The book critically examines modern education systems that prioritize memorization over understanding and compliance over creativity.</p>
-                <p><strong>Technological Ethics:</strong> I explore artificial intelligence and its impact on society, sharing my personal experience building an LLM and reflecting on the broader implications of technological advancement.</p>
-                <p><strong>Economic Systems:</strong> The text challenges conventional economic structures and proposes alternative models based on value circulation rather than extraction.</p>
-                <p><strong>Governance:</strong> I question the effectiveness of traditional political systems and consider how they might be redesigned to better serve human flourishing.</p>
-                <p><strong>Personal Journey:</strong> Throughout the book, I weave in personal reflections about my relationship with my father, my ambitions, and the limitations I face as a young thinker with boundless aspirations.</p>
-                
-                <h3>Purpose</h3>
-                <p>"The Three Orbits" represents both my analysis of world systems and my personal manifesto. It challenges readers to question established structures and consider alternative possibilities based on principles of justice and human dignity.</p>
-                
-            </div>
-        </div>
-    </div>
 
     <script>
         // Mobile menu toggle
@@ -1271,6 +1377,20 @@
             });
         });
 
+        // Other Projects toggle
+        const otherProjectsToggle = document.querySelector('.other-projects-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const otherProjectsGrid = document.querySelector('.other-projects-grid');
+        
+        otherProjectsToggle.addEventListener('click', () => {
+            toggleIcon.classList.toggle('rotate');
+            if (otherProjectsGrid.style.display === 'none') {
+                otherProjectsGrid.style.display = 'grid';
+            } else {
+                otherProjectsGrid.style.display = 'none';
+            }
+        });
+
         // Modal functionality
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -1289,7 +1409,9 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const modalId = this.getAttribute('data-modal');
-                openModal(modalId);
+                if (modalId) {
+                    openModal(modalId);
+                }
             });
         });
 
@@ -1329,6 +1451,25 @@
             link.addEventListener('mouseleave', () => {
                 link.style.color = '#97979f';
             });
+        });
+
+        // ESC key handler for cover modals - self-contained
+        document.addEventListener('keydown', function(event) {
+        // Check if ESC key was pressed (keyCode 27)
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            // Find all elements with .cover.active class
+            const activeCovers = document.querySelectorAll('.cover.active');
+            
+            // Loop through any active covers and close them
+            if (activeCovers.length > 0) {
+            activeCovers.forEach(function(cover) {
+                // Close the cover
+                cover.classList.remove('active');
+                // Reset body overflow
+                document.body.style.overflow = 'auto';
+            });
+            }
+        }
         });
     </script>
 </body>
